@@ -27,10 +27,3 @@ df.drop_duplicates(subset=['id'], inplace=True)
 #automatic EDA with correlations between vars calculated on the merged dataset 
 eda_df = ProfileReport(df)
 eda_df.to_file(output_file='./eda/df_eda.html')
-#select the higher budget and higher rated films 
-df_hb = df.loc[df['budget'] > 100000000]
-df_hr = df.loc[(df['vote_average'] >= 7.5) & (df['vote_count'] > 3)]
-print(len(df_hb), len(df_hr))
-#get correlation between budget and box office for hr
-print(df_hb['budget'].corr(df_hb['lifetime_gross']))
-print(df_hb['vote_average'].corr(df_hb['lifetime_gross']))
